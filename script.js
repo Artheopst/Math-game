@@ -8,28 +8,27 @@ var section = document.querySelector('section');
 var compteur = 0;
 var startTime;
 var totalTime = 0;
-var timerInterval;
 var elapsedTime = 0;
 var timerStarted = false; // Track whether the timer has started
 
 // Function to generate random numbers and update the display
 function generateRandomNumbers() {
-  var random1 = Math.floor(Math.random() * 11); // Génère des nombres entre 0 et 10
-  var random2 = Math.floor(Math.random() * 11); // Génère des nombres entre 0 et 10
+  var random1 = Math.floor(Math.random() * 11); // Generates numbers between 0 and 10
+  var random2 = Math.floor(Math.random() * 11); // Generates numbers between 0 and 10
   var operation = getRandomOperation();
 
-  // Ajuste les nombres pour la division pour assurer des résultats entiers
+  // Adjust numbers for division to ensure integer results
   if (operation === '/') {
       while (random2 === 0) {
           random2 = Math.floor(Math.random() * 11);
       }
-      random1 = random2 * Math.floor(Math.random() * 11); // Assure que random1 est un multiple de random2
+      random1 = random2 * Math.floor(Math.random() * 11); // Ensures random1 is a multiple of random2
   }
 
   nb1.innerHTML = random1;
   nb2.innerHTML = random2;
   op.innerHTML = operation;
-  startTime = new Date(); // Démarre le chronomètre pour la question actuelle
+  startTime = new Date(); // Starts the timer for the current question
   return [random1, random2, operation];
 }
 
@@ -38,7 +37,6 @@ function getRandomOperation() {
   var operations = ['+', '-', '*', '/'];
   return operations[Math.floor(Math.random() * operations.length)];
 }
-
 
 // Function to calculate the correct result based on the operation
 function calculateResult(num1, num2, operation) {
@@ -54,13 +52,6 @@ function calculateResult(num1, num2, operation) {
   }
 }
 
-
-// Function to update the live timer display
-function updateTimer() {
-    elapsedTime++;
-    document.getElementById('timer').innerText = elapsedTime;
-}
-
 // Initialize random numbers at the start
 var [random1, random2] = generateRandomNumbers();
 
@@ -73,10 +64,6 @@ function verifier(event) {
     var timeTaken = (currentTime - startTime) / 1000; // Time taken for the current question in seconds
 
     if (res === correctResult) {
-        if (!startTime) {
-          startTime = new Date();
-          timerInterval = setInterval(updateTimer, 1000); // Start the timer interval
-        }
         totalTime += timeTaken; // Add the time taken for the current question to the total time
 
         Message.style.background = "green";
@@ -86,7 +73,6 @@ function verifier(event) {
         [random1, random2] = generateRandomNumbers();
         document.querySelector('.res').value = ''; // Clear the input field
     } else {
-        clearInterval(timerInterval); // Stop the timer
         Message.style.background = "red";
         Message.innerHTML = `You lost. Score: ${compteur}, Total Time: ${totalTime.toFixed(2)} seconds.`;
         section.innerHTML = "";
