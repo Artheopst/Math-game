@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="Message"></div>
+    <section>
+        <div class="calcul">
+            <h1 class="nb1">0</h1>
+            <h1 class="op">+</h1>
+            <h1 class="nb2">0</h1>
+        </div>        
+        <form id="gameForm">
+            <span class="equal">=</span>
+            <input type="number" class="res" required>
+            <input type="submit" value="Submit">
+        </form>
+        <div class="score">Score: <span id="score">0</span></div>
+        <div class="timer">Time: <span id="timer">0</span> seconds</div>
+        <a href="#" class="link">Play Again</a>
+    </section>
+    
+    <script src="script.js"></script>
+</body>
+</html>
