@@ -1,6 +1,3 @@
-Just click on the link on th right to play the game
+Click on the link 
 
-
-credit: faiz-dev
-
-ytb video: https://www.youtube.com/watch?v=dv4YP1j9XCg
+I followed this tutorial ttps://www.youtube.com/watch?v=dv4YP1j9XCg
